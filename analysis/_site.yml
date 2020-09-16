@@ -12,7 +12,7 @@ navbar:
   right:
   - icon: fa-github
     text: Source code
-    href: https://github.com//myproject_test
+    href: https://github.com/nganci/myproject_test
 output:
   workflowr::wflow_html:
     toc: yes
