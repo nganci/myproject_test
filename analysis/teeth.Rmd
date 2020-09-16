@@ -12,4 +12,37 @@ editor_options:
 ```{r}
 
 ```
+data("ToothGrowth")
+    head(ToothGrowth)
+    summary(ToothGrowth)
+    str(ToothGrowth)
+    
+#save to relative path
+write.csv(ToothGrowth, file = "data/teeth.csv")
 
+teeth <- read.csv("data/teeth.csv", row.names = 1)
+    head(teeth)
+    
+#create boxplots
+boxplot(len ~ dose, data = teeth)
+    boxplot(len ~ supp, data = teeth)
+    boxplot(len ~ dose + supp, data = teeth)
+    
+data("ToothGrowth")
+teeth <- ToothGrowth
+boxplot(len ~ dose, data = teeth)
+boxplot(len ~ supp, data = teeth)
+boxplot(len ~ dose + supp, data = teeth)
+
+# Observed difference in teeth length due to supplement method
+    mean(teeth$len[teeth$supp == "OJ"]) - mean(teeth$len[teeth$supp == "VC"])
+    # Permute the observations
+    supp_perm <- sample(teeth$supp)
+    # Calculate mean difference in permuted data
+    mean(teeth$len[supp_perm == "OJ"]) - mean(teeth$len[supp_perm == "VC"])
+    
+mean(teeth$len[teeth$supp == "OJ"]) - mean(teeth$len[teeth$supp == "VC"])
+    # Permute the observations
+    supp_perm <- sample(teeth$supp)
+    # Caclculate mean difference in permuted data
+    mean(teeth$len[supp_perm == "OJ"]) - mean(teeth$len[supp_perm == "VC"])
